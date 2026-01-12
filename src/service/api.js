@@ -70,13 +70,33 @@ export const registerUser = async (data) => {
 
   export const deletePost = async (id) => {
     try {
-      const response = await Api.delete(`${Endpoints.posts}/${id}`);
+      const response = await Api.delete(`${Endpoints.deletePost}/${id}`);
       return response.data;
     } catch (error) {
       return {
         success: false,
         message: "Failed to delete post",
       };
+    }
+  };
+  
+
+  export const getPostById = async (id) => {
+    try {
+      const res = await Api.get(`${Endpoints.getPostById}/${id}`);
+      return res.data;
+    } catch (err) {
+      return { success: false, message: "Failed to fetch post" };
+    }
+  };
+  
+ 
+  export const updatePost = async (id, data) => {
+    try {
+      const res = await Api.put(`${Endpoints.editPost}/${id}`, data);
+      return res.data;
+    } catch (err) {
+      return { success: false, message: "Failed to update post" };
     }
   };
   

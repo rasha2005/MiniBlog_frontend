@@ -33,6 +33,15 @@ function App() {
           }
         />
 
+<Route
+  path="/posts/edit/:id"
+  element={
+    <ProtectedRoute>
+      <EditPost />
+    </ProtectedRoute>
+  }
+/>
+
         {/* Redirect unknown paths */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
