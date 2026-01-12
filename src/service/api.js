@@ -67,4 +67,16 @@ export const registerUser = async (data) => {
       };
     }
   };
+
+  export const deletePost = async (id) => {
+    try {
+      const response = await Api.delete(`${Endpoints.posts}/${id}`);
+      return response.data;
+    } catch (error) {
+      return {
+        success: false,
+        message: "Failed to delete post",
+      };
+    }
+  };
   

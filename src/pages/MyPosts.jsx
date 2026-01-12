@@ -8,6 +8,22 @@ export default function MyPosts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+  
+    if (!confirmDelete) return;
+  
+    const res = await deletePost(id);
+  
+    if (res.success) {
+      setPosts((prev) => prev.filter((post) => post._id !== id));
+    } else {
+      alert(res.message || "Failed to delete post");
+    }
+  };
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await getMyPosts();
@@ -82,11 +98,14 @@ export default function MyPosts() {
                     >
                       Edit
                     </button>
-                    <button
-                      className="text-red-600 hover:underline"
-                    >
-                      Delete
-                    </button>
+                   
+                   <button
+                   onClick={() => handleDelete(post._id)}
+                   className="text-red-600 hover:underline"
+                 >
+                   Delete
+                 </button>
+                 
                   </div>
                 </div>
               </div>
