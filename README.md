@@ -38,6 +38,8 @@ Authenticated users can **register, login, create, read, edit, and delete their 
 | POST   | /create-post        | Create post                | Yes  |
 | GET    | /my-posts | Get logged-in user's posts | Yes   |
 | DELETE | /delete-post/:id    | Soft delete post           | Yes   |
+| PUT | /edit-post/:id    | update the post           | Yes   |
+| GET | /getPostById/:id    | Fetch a particular post using its ID | Yes   |
 
 ---
 
